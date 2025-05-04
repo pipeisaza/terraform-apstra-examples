@@ -16,6 +16,7 @@ resource "apstra_datacenter_device_allocation" "devices" {
     for_each = local.devices
     blueprint_id     = apstra_datacenter_blueprint.dc1_blueprint.id
     initial_interface_map_id = apstra_interface_map.vJunos_IM.id
+#    initial_interface_map_id = apstra_interface_map.vjunos-int-map1.id
     node_name        = each.value.label
     device_key       = apstra_managed_device.device[each.key].system_id
     deploy_mode      = "deploy"

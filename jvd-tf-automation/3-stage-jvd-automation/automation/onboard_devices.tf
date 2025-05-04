@@ -4,31 +4,31 @@ locals {
     devices = {
         leaf1 = {
             label = "dc1_single_001_leaf1", 
-            mgmt_ip = "192.168.122.11"
+            mgmt_ip = "10.31.100.93"
         },
         leaf2 = {
             label = "dc1_esi_esxi_001_leaf1", 
-            mgmt_ip = "192.168.122.12"
+            mgmt_ip = "10.31.100.94"
         },
         leaf3 = {
             label = "dc1_esi_esxi_001_leaf2", 
-            mgmt_ip = "192.168.122.13"
+            mgmt_ip = "10.31.100.95"
         },   
         leaf4 = {
             label = "dc1_border_001_leaf1", 
-            mgmt_ip = "192.168.122.14"
+            mgmt_ip = "10.31.100.96"
         },  
         leaf5 = {
             label = "dc1_border_001_leaf2", 
-            mgmt_ip = "192.168.122.15"
+            mgmt_ip = "10.31.100.97"
         },
         spine1 = {
             label = "spine1", 
-            mgmt_ip = "192.168.122.101"
+            mgmt_ip = "10.31.100.91"
         },
         spine2 = {
             label = "spine2", 
-            mgmt_ip = "192.168.122.102"
+            mgmt_ip = "10.31.100.92"
         } 
     }
 }

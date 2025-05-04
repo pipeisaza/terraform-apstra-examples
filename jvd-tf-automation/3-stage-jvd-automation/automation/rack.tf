@@ -10,17 +10,17 @@ resource "apstra_rack_type" "dc1_single" {
     single_leaf = { // "leaf switch" on this line is the name used by links targeting this switch.
       logical_device_id   = apstra_logical_device.vJunos_LD.id
       spine_link_count    = 1
-      spine_link_speed    = "10G"
+      spine_link_speed    = "1G"
       #redundancy_protocol = "esi" // omit if none has to be used
     }
   }
   generic_systems = {
     h1 = {
       count             = 1
-      logical_device_id = "AOS-1x10-1"
+      logical_device_id = "AOS-1x1-1"
       links = {
         link = {
-          speed              = "10G"
+          speed              = "1G"
           target_switch_name = "single_leaf"
           tag_ids = [apstra_tag.host_tags["h1"].id]
         }
@@ -28,10 +28,10 @@ resource "apstra_rack_type" "dc1_single" {
     },
     h2 = {
       count             = 1
-      logical_device_id = "AOS-1x10-1"
+      logical_device_id = "AOS-1x1-1"
       links = {
         link = {
-          speed              = "10G"
+          speed              = "1G"
           target_switch_name = "single_leaf"
           lag_mode = "lacp_active"
           tag_ids = [apstra_tag.host_tags["h2"].id]
@@ -51,17 +51,17 @@ resource "apstra_rack_type" "dc1_esi_esxi" {
     esi_leaf = { // "leaf switch" on this line is the name used by links targeting this switch.
       logical_device_id   = apstra_logical_device.vJunos_LD.id
       spine_link_count    = 1
-      spine_link_speed    = "10G"
+      spine_link_speed    = "1G"
       redundancy_protocol = "esi" // omit if none has to be used
     }
   }
   generic_systems = {
     h1 = {
       count             = 1
-      logical_device_id = "AOS-1x10-1"
+      logical_device_id = "AOS-1x1-1"
       links = {
         link = {
-          speed              = "10G"
+          speed              = "1G"
           target_switch_name = "esi_leaf"
           #lag_mode = "lacp_active" // simply omit lag_mode and specify a switch_peer for single homing
           switch_peer = "first"
@@ -71,10 +71,10 @@ resource "apstra_rack_type" "dc1_esi_esxi" {
     },
     h2 = {
       count             = 1
-      logical_device_id = "AOS-2x10-1"
+      logical_device_id = "AOS-2x1-1"
       links = {
         link = {
-          speed              = "10G"
+          speed              = "1G"
           target_switch_name = "esi_leaf"
           lag_mode = "lacp_active"
           tag_ids = [apstra_tag.host_tags["h4"].id]
@@ -83,10 +83,10 @@ resource "apstra_rack_type" "dc1_esi_esxi" {
     },
     h3 = {
       count             = 1
-      logical_device_id = "AOS-2x10-1"
+      logical_device_id = "AOS-2x1-1"
       links = {
         link = {
-          speed              = "10G"
+          speed              = "1G"
           target_switch_name = "esi_leaf"
           lag_mode = "lacp_active"
           tag_ids = [apstra_tag.host_tags["h5"].id]
@@ -95,10 +95,10 @@ resource "apstra_rack_type" "dc1_esi_esxi" {
     },
     h4 = {
       count             = 1
-      logical_device_id = "AOS-1x10-1"
+      logical_device_id = "AOS-1x1-1"
       links = {
         link = {
-          speed              = "10G"
+          speed              = "1G"
           target_switch_name = "esi_leaf"
           #lag_mode = "lacp_active" // simply omit lag_mode and specify a switch_peer for single homing
           switch_peer = "second"
@@ -108,10 +108,10 @@ resource "apstra_rack_type" "dc1_esi_esxi" {
     },
     h5 = {
       count             = 1
-      logical_device_id = "AOS-2x10-1"
+      logical_device_id = "AOS-2x1-1"
       links = {
         link = {
-          speed              = "10G"
+          speed              = "1G"
           target_switch_name = "esi_leaf"
           lag_mode = "lacp_active"
           tag_ids = [apstra_tag.host_tags["h7"].id]
@@ -131,29 +131,29 @@ resource "apstra_rack_type" "dc1_border" {
     border_leaf = { // "leaf switch" on this line is the name used by links targeting this switch.
       logical_device_id   = apstra_logical_device.vJunos_LD.id
       spine_link_count    = 1
-      spine_link_speed    = "10G"
+      spine_link_speed    = "1G"
       redundancy_protocol = "esi" // omit if none has to be used
     }
   }
   generic_systems = {
     h1 = {
       count             = 1
-      logical_device_id = "AOS-4x10-1"
+      logical_device_id = "AOS-4x1-1"
       links = {
         link1 = {
-          speed              = "10G"
+          speed              = "1G"
           target_switch_name = "border_leaf"
           #lag_mode = "lacp_active" // simply omit lag_mode and specify a switch_peer for single homing
           switch_peer = "first"
         },
         link2 = {
-          speed              = "10G"
+          speed              = "1G"
           target_switch_name = "border_leaf"
           #lag_mode = "lacp_active" // simply omit lag_mode and specify a switch_peer for single homing
           switch_peer = "second"
         },
         link3 = {
-          speed              = "10G"
+          speed              = "1G"
           target_switch_name = "border_leaf"
           lag_mode = "lacp_active"
           tag_ids = [apstra_tag.host_tags["h8"].id]
@@ -162,10 +162,10 @@ resource "apstra_rack_type" "dc1_border" {
     },
     h2 = {
       count             = 1
-      logical_device_id = "AOS-2x10-1"
+      logical_device_id = "AOS-2x1-1"
       links = {
         link = {
-          speed              = "10G"
+          speed              = "1G"
           target_switch_name = "border_leaf"
           lag_mode = "lacp_active"
           tag_ids = [apstra_tag.host_tags["h9"].id]
